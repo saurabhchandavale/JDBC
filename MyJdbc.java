@@ -8,12 +8,13 @@ public class MyJdbc {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project1", "root", "Saurabh@15");
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select username from student1 where userId = 1");
+            ResultSet resultSet = statement.executeQuery("select * from people");
             while (resultSet.next()) {
-                System.out.println(resultSet.getString("username"));
+                System.out.println(resultSet.getString("name"));
             }
-        } catch (Exception e) {
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
+
 }
