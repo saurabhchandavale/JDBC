@@ -17,10 +17,11 @@ public class batchUpdate {
 			// set connection
 			Conn =  DriverManager.getConnection("jdbc:mysql://localhost:3306/project1", "root", "Saurabh@15");	
 			Stmt = Conn.createStatement();
-			Stmt.addBatch("select * from demoEmployee");
-//			Stmt.addBatch("insert into demoEmployee values(1009,'Umesh',75000,'Chopadi')");
-//			Stmt.addBatch("update demoEmployee set esal = 60000 where eno = 1001");
-//			Stmt.addBatch("delete from demoEmployee where eno = 1005");
+			//Stmt.addBatch("select * from demoEmployee"); 
+			//In batch update we can not use select query It is only used for non select query
+			Stmt.addBatch("insert into demoEmployee values(1009,'Umesh',75000,'Chopadi')");
+			Stmt.addBatch("update demoEmployee set esal = 60000 where eno = 1001");
+			Stmt.addBatch("delete from demoEmployee where eno = 1005");
 			int[] count= Stmt.executeBatch();
 			int updateCount = 0;
 			for(int x : count) {
